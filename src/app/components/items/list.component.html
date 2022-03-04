@@ -1,0 +1,18 @@
+<ActionBar title="Simple List Items"> </ActionBar>
+
+<GridLayout columns="*" rows="50, *">
+
+  <GridLayout row="0" col="0" columns="*, auto" rows="auto">
+    <TextField class="-outline input" row="0" col="0" [(ngModel)]="title"></TextField>
+    <Button text="Add new item" class="-outline btn" row="0" col="1" (tap)="onAdd()"></Button>
+  </GridLayout>
+
+  <ListView row="1" col="0" [items]="items$ | async">
+    <ng-template let-item="item">
+      <GridLayout columns="*, auto" rows=" *">
+        <Label class="title" [text]="item.Title" row="0" col="0"></Label>
+        <Button text="Remove" class="-outline btn" row="0" col="1" (tap)="onRemove(item)"></Button>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>
